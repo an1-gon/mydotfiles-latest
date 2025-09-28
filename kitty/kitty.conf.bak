@@ -1,0 +1,51 @@
+#
+#Allow programs or scripts to update kitty
+allow_remote_control yes
+
+#Pull wallpaper colors from pywal
+include ~/.cache/wal/colors-kitty.conf
+
+#HomeBrew Kitty Theme
+#include ~/.config/kitty/Catppuccin-Mocha.conf
+
+# Background opacity (0.75 = 75% opacity)
+background_opacity 0.75
+
+# Cursor shape
+cursor_shape block
+
+# Disable shell integration cursor overrides (so kitty fully controls cursor)
+shell_integration no-cursor
+
+# Keep blinking indefinitely
+#cursor_stop_blinking_after 0
+
+# Cursor blink interval (speed of blink)
+#cursor_blink_interval 0.5
+
+# Cursor trail behavior:
+# How soon after blinking the trail starts fading
+cursor_trail_start_threshold 0
+
+# How fast the cursor trail fades away (lower is faster)
+cursor_trail_decay 0.01 0.05
+
+# Threshold opacity for the trail before disappearing
+cursor_trail 10
+
+# Delay before blinking resumes after activity
+cursor_blink true
+
+# Increase font size
+font_size 14
+
+# Font Style
+# font_family JetBrainsMono Nerd Font Mono
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="FiraCode Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
