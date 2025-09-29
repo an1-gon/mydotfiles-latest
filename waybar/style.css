@@ -10,15 +10,15 @@
  * ----------------------------------------------------- 
 */
 
-@define-color backgroundlight #0c0f1b;
-@define-color backgrounddark #0c0f1b;
-@define-color workspacesbackground1 #978B6E;
-@define-color workspacesbackground2 #2E6097;
-@define-color bordercolor #5B6AA5;
-@define-color textcolor1 #c5c1dc;
-@define-color textcolor2 #c5c1dc;
-@define-color textcolor3 #0c0f1b;
-@define-color iconcolor #3276C2;
+@define-color backgroundlight #0B0C07;
+@define-color backgrounddark #0B0C07;
+@define-color workspacesbackground1 #66605A;
+@define-color workspacesbackground2 #6B6E66;
+@define-color bordercolor #B03F41;
+@define-color textcolor1 #caccc9;
+@define-color textcolor2 #caccc9;
+@define-color textcolor3 #0B0C07;
+@define-color iconcolor #7B837B;
 
 /* -----------------------------------------------------
  * General 
@@ -51,7 +51,7 @@ window#waybar {
     border-radius: 30px 30px 30px 30px;
     font-weight: bold;
     font-style: normal;
-    opacity: 1.0;
+    opacity: 0.8;
     color: @textcolor1;
 }
 
@@ -62,7 +62,7 @@ window#waybar {
     color: @textcolor1;
     background-color: @workspacesbackground2;
     transition: all 0.1s linear;
-    opacity: 0.4;
+    opacity: 1.0;
 }
 
 #workspaces button.active {
@@ -71,7 +71,7 @@ window#waybar {
     border-radius: 30px 30px 30px 30px;
     min-width: 60px;
     transition: all 0.1s linear;
-    opacity:1.0;
+    opacity: 1.0;
 }
 
 #workspaces button:hover {
