@@ -48,6 +48,18 @@ sed -i "s/@define-color textcolor2 #[A-Fa-f0-9]*;/@define-color textcolor2 ${for
 sed -i "s/@define-color textcolor3 #[A-Fa-f0-9]*;/@define-color textcolor3 ${background};/" ~/.config/waybar/style.css
 sed -i "s/@define-color iconcolor #[A-Fa-f0-9]*;/@define-color iconcolor ${color4};/" ~/.config/waybar/style.css
 
+
+
+# Helper: ensure colors are in rgba() format with full opacity
+to_rgba() {
+    local hex="${1#\#}"   # remove #
+    printf "rgba(%d,%d,%d,1.0)" 0x${hex:0:2} 0x${hex:2:2} 0x${hex:4:2}
+}
+
+# Apply with solid (non-transparent) colors
+hyprctl keyword general:col.active_border "$(to_rgba "$color1") $(to_rgba "$color2") 45deg"
+hyprctl keyword general:col.inactive_border "$(to_rgba "$color8")"
+
 #Restart waybar
 killall waybar 2>/dev/null
 waybar &
