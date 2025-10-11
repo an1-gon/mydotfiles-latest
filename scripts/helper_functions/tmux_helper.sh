@@ -79,10 +79,10 @@ create_session() {
 attach_session() {
 
   if [[ -n $TMUX ]]; then
-      local active_sesh
+      #local active_sesh
 
-      active_sesh="$(tmux display-message -p '#S')" 
-      tmux switch-client -t "$active_sesh"
+     # active_sesh="$(tmux display-message -p '#S')" 
+     tmux switch-client -t $(tmux list-sessions -F '#{session_name} #{session_created}' | sort -k2 -nr | head -n1 | awk '{print $1}')
 
   else
 
@@ -94,7 +94,7 @@ attach_session() {
       tmux new-session -s "${sessionName}"
   fi
 
-  fi  
+  fi
 
 }
 
