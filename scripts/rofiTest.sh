@@ -23,8 +23,14 @@ if [[ -n "$SELECTED_WALL" ]]; then
     wal -i $selected_path -n --backend xres 
 
     # Overwrite hyprpaper config
-    echo "preload = $selected_path" > "$hyprpaper_conf"
-    echo "wallpaper = ,$selected_path" >> "$hyprpaper_conf"
+   # echo "preload = $selected_path" > "$hyprpaper_conf"
+   cat <<EOF > "$hyprpaper_conf"
+  wallpaper {
+    monitor = eDP-1
+    path = $selected_path
+    fit_mode = cover
+  }
+EOF
 
     # Restart Hyprpaper to apply new config
     pkill hyprpaper

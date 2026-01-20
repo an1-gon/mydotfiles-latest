@@ -7,7 +7,7 @@ echo "Scanning for Wireless Networks...."
 sleep 0.5
  
 # Get list of networks (skip header line)
-NETWORK=$(iwctl station wlan0 get-networks | awk 'NR>4 {print $1}' | fzf --prompt="Select Wi-Fi: ")
+NETWORK=$(iwctl station wlan0 get-networks | awk 'NR>5 {print $1}' | fzf --prompt="Select Wi-Fi: ")
 
 # Exit if no network was chosen
 [ -z "$NETWORK" ] && echo "No network selected." && exit 1

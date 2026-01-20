@@ -10,15 +10,15 @@
  * ----------------------------------------------------- 
 */
 
-@define-color backgroundlight #0F161E;
-@define-color backgrounddark #0F161E;
-@define-color workspacesbackground1 #32514E;
-@define-color workspacesbackground2 #595A59;
-@define-color bordercolor #B85154;
-@define-color textcolor1 #8ae1c1;
-@define-color textcolor2 #8ae1c1;
-@define-color textcolor3 #0F161E;
-@define-color iconcolor #30A95B;
+@define-color backgroundlight #0A0D13;
+@define-color backgrounddark #0A0D13;
+@define-color workspacesbackground1 #A04959;
+@define-color workspacesbackground2 #EC5D68;
+@define-color bordercolor #E49C6F;
+@define-color textcolor1 #d3d1d7;
+@define-color textcolor2 #d3d1d7;
+@define-color textcolor3 #0A0D13;
+@define-color iconcolor #4A738B;
 
 /* -----------------------------------------------------
  * General 
