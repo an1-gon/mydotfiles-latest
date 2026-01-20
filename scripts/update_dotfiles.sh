@@ -10,4 +10,4 @@ git commit -m "dot files updated on $(date +%d-%B-%Y)" #> /dev/null 2&>1
 
 git push -u origin main > /dev/null 2&>1
 
-echo "Dot files updated to github"
+echo "Dot files updated to github bitch am a boss"
