@@ -1,6 +1,6 @@
 #script runner folder for running commands without sourcing
 export PATH="$HOME/bin:$PATH"
-
+export MANPAGER="less" 
 ##### --- Plugin Manager: Zinit --- #####
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -41,6 +41,11 @@ alias cd..='cd ..'
 
 # Tip: use \ls or \cat to bypass these aliases
 
+# Function for opening man pages in nvim
+
+man() {
+  command nvim "+Man $@"
+}
 
 ##### --- Prompt (Starship) & Keymap --- #####
 #set -o vi                     # enable vi mode in ZLE
