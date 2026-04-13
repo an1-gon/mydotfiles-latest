@@ -58,6 +58,9 @@ vim.keymap.set({ 'n', 'v', 'i' }, '<M-h>', function()
   require('noice').cmd 'history'
 end, { desc = 'Noice History' })
 
+--Open terminal in nvim
+vim.keymap.set('n', '<leader>T', '<cmd>split | terminal<CR>', { desc = 'Open terminal in nvim' })
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })

@@ -88,9 +88,24 @@ return {
       },
     })
 
+    -- Configure Go language server
+
+    vim.lsp.config('gopls', {
+      cmd = { 'gopls' },
+      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      root_dir = vim.fs.root(0, { 'go.work', 'go.mod', '.git' }),
+      settings = {
+        gopls = {
+          analyses = { unusedparams = true },
+          staticcheck = true,
+        },
+      },
+    })
+
     -- Enable the LSP server
     vim.lsp.enable 'luals'
     vim.lsp.enable 'marksman'
+    vim.lsp.enable 'gopls'
 
     -- Set up LSP keymaps
     vim.api.nvim_create_autocmd('LspAttach', {

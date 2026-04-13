@@ -1,6 +1,13 @@
 #script runner folder for running commands without sourcing
 export PATH="$HOME/bin:$PATH"
 export MANPAGER="less" 
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+
+
+
 ##### --- Plugin Manager: Zinit --- #####
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
