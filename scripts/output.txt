@@ -1,0 +1,16 @@
+                               Available networks[1;90m                              [0m
+[90m--------------------------------------------------------------------------------
+[0m[1;90m      Network name                      Security            Signal
+[0m[90m--------------------------------------------------------------------------------
+[0m  [1;90m> [0m  MoL_Guest                         psk                 ***[1;90m*[0m    
+      MoL_Empl                          psk                 ****    
+      MoL_Exec                          psk                 ****    
+      MOLemp                            psk                 ****    
+      Corp-WiFi                         8021x               ***[1;90m*[0m    
+      Planning_Staff                    psk                 *[1;90m***[0m    
+      EPPD_Guest                        open                *[1;90m***[0m    
+      MoP_EPPD                          psk                 *[1;90m***[0m    
+      DIRECT-96-HP M477 LaserJet        psk                 *[1;90m***[0m    
+      Tower D Staff                     8021x               *[1;90m***[0m    
+      CXNK004A1E57                      psk                 *[1;90m***[0m    
+

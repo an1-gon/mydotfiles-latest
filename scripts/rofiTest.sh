@@ -30,6 +30,14 @@ if [[ -n "$SELECTED_WALL" ]]; then
     path = $selected_path
     fit_mode = cover
   }
+
+  wallpaper {
+    monitor = HDMI-A-1
+    path = $selected_path
+    fit_mode = cover
+  }
+ 
+  splash = false
 EOF
 
     # Restart Hyprpaper to apply new config
