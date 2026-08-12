@@ -10,15 +10,15 @@
  * ----------------------------------------------------- 
 */
 
-@define-color backgroundlight #0b0403;
-@define-color backgrounddark #0b0403;
-@define-color workspacesbackground1 #CB0A07;
-@define-color workspacesbackground2 #EC170E;
-@define-color bordercolor #A25336;
-@define-color textcolor1 #ddcfbf;
-@define-color textcolor2 #ddcfbf;
-@define-color textcolor3 #0b0403;
-@define-color iconcolor #927154;
+@define-color backgroundlight #0E0B20;
+@define-color backgrounddark #0E0B20;
+@define-color workspacesbackground1 #AA09E4;
+@define-color workspacesbackground2 #F10BD7;
+@define-color bordercolor #F86FEE;
+@define-color textcolor1 #c5e5ec;
+@define-color textcolor2 #c5e5ec;
+@define-color textcolor3 #0E0B20;
+@define-color iconcolor #D698EC;
 
 /* -----------------------------------------------------
  * General 
@@ -32,7 +32,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
     border-bottom: 0px solid #ffffff;
     /* color: #FFFFFF; */
     background: transparent;
