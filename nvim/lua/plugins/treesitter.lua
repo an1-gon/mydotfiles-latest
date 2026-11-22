@@ -1,33 +1,33 @@
-return {
-  'nvim-treesitter/nvim-treesitter',
-  branch = 'main', -- Fixed: Switch from master to main
-  lazy = false,
-  build = ':TSUpdate',
+local treesitter = require('nvim-treesitter')
 
-  config = function()
-    -- Fixed: Use the updated module path
-    local ts = require 'nvim-treesitter'
-
-    -- The modern setup is highly minimal.
-    -- Features like highlighting are now managed natively by Neovim.
-    ts.setup {
-      install_dir = vim.fn.stdpath 'data' .. '/site',
-    }
-
-    -- Explicitly tell treesitter which parsers to fetch
-    ts.install {
-      'lua',
-      'javascript',
-      'html',
-      'markdown',
-      'css',
-      'json',
-      'bash',
-      'dockerfile',
-      'typescript',
-      'vim',
-      'yaml',
-      'markdown_inline',
-    }
-  end,
+local ensure_installed = {
+    -- languages
+    "go", "typescript", "javascript", "tsx",
+    "html", "css", "json", "bash",
+    -- extras
+   "http", "markdown", "markdown_inline", "dockerfile",
 }
+
+treesitter.install(ensure_installed)
+
+vim.api.nvim_create_autocmd("Filetype", {
+        pattern = "*",
+        callback = function(args)
+            local buf = args.buf
+            local ft = vim.bo[buf].filetype
+
+            local lang = vim.treesitter.language.get_lang(ft)
+            if not lang then
+                return
+            end
+
+            local ok_add = pcall(vim.treesitter.language.add, lang)
+            if not ok_add then
+                return
+            end
+
+            pcall(vim.treesitter.start, buf, lang)
+        end,
+
+
+})

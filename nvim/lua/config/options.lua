@@ -11,7 +11,7 @@ vim.o.updatetime = 250 -- Decrease update time
 vim.o.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.o.backup = false -- creates a backup file
 vim.o.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect,fuzzy,nosort' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 vim.o.whichwrap = 'bs<>[]hl' -- which "horizontal" keys are allowed to travel to prev/next line
 vim.o.wrap = false -- display lines as one long line
@@ -29,6 +29,7 @@ vim.o.splitbelow = true -- force all horizontal splits to go below current windo
 vim.o.splitright = true -- force all vertical splits to go to the right of current window
 vim.o.swapfile = false -- creates a swapfile
 vim.o.smarttab = true
+vim.o.inccommand = "split"
 vim.o.autoindent = true
 vim.o.smartindent = true -- make indenting smarter again
 vim.o.showmode = false -- we don't need to see things like -- INSERT -- anymore
@@ -37,7 +38,7 @@ vim.o.backspace = 'indent,eol,start' -- allow backspace on
 vim.o.pumheight = 10 -- pop up menu height
 vim.o.conceallevel = 0 -- so that `` is visible in markdown files
 vim.o.fileencoding = 'utf-8' -- the encoding written to a file
-vim.o.cmdheight = 1 -- more space in the neovim command line for displaying messages
+vim.o.cmdheight = 1  -- more space in the neovim command line for displaying messages
 vim.o.autoindent = true -- copy indent from current line when starting new one
 vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append '-' -- hyphenated words recognized by searches
@@ -53,3 +54,40 @@ function _G.BufferCount()
   local count = #buffers
   return '(' .. count .. ')'
 end
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})
+
+vim.keymap.set({'v', 'n'}, '<A-x>', function()
+    local current_line = vim.api.nvim_get_current_line()
+    local result, count = string.gsub(current_line, "%[ %]", "[x]")
+
+    local found = false
+
+    if count > 0 then
+        local current_last_line = vim.api.nvim_buf_line_count(0)
+
+        vim.api.nvim_win_set_cursor(0, {current_last_line, 0})
+
+        local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+
+        for _, line in ipairs(lines) do
+            if string.find(line, "## Completed Tasks", 1, true) then
+                found = true
+                break
+            end
+        end
+
+        if not found then
+           vim.api.nvim_put({"## Completed Tasks"}, "c", true, true)
+        end
+
+        local last_line = vim.api.nvim_buf_line_count(0)
+        vim.api.nvim_buf_set_lines(0, last_line, last_line, false, {result .. os.date(" %Y-%m-%d")})
+   end
+end)

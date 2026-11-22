@@ -102,10 +102,18 @@ return {
       },
     })
 
+    -- Configure QML language server
+    vim.lsp.config('qml', {
+      cmd = { 'qml-language-server' },
+      filetypes = { 'qml' },
+      root_markers = { 'qmldir', '.git' },
+    })
+
     -- Enable the LSP server
     vim.lsp.enable 'luals'
     vim.lsp.enable 'marksman'
     vim.lsp.enable 'gopls'
+    vim.lsp.enable 'qml'
 
     -- Set up LSP keymaps
     vim.api.nvim_create_autocmd('LspAttach', {

@@ -12,10 +12,10 @@
     "include": [
         "~/.config/ml4w/settings/waybar-quicklinks.json",
         "~/.config/waybar/modules.json"
-    ],   
+    ],
     "modules-left": [
         "custom/appmenu",
-       
+
         "group/quicklinks"
     ],
     "modules-center": [
@@ -25,7 +25,6 @@
         "mpd", 
         "pulseaudio", 
         "network", 
-        "keyboard-state", 
         "battery", 
         "tray",
         "custom/exit",
@@ -39,17 +38,17 @@
     "margin-top": 14,
     "margin-bottom": 0,
     "margin-left": 14,
-    "margin-right": 14,    
+    "margin-right": 14,
     "spacing": 0,
     "output": "HDMI-A-1",
 
     // Load Modules
     "include": [
         "~/.config/waybar/modules.json"
-    ],   
+    ],
     "modules-left": [
         "custom/appmenu",
-       
+
         "group/quicklinks"
     ],
     "modules-center": [
@@ -61,7 +60,6 @@
         "network", 
         "cpu", 
         "memory", 
-        "keyboard-state", 
         "battery", 
         "tray",
         "custom/exit",

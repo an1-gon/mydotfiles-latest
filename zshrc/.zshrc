@@ -58,7 +58,8 @@ man() {
 #set -o vi                     # enable vi mode in ZLE
 
 eval "$(starship init zsh)"   # init Starship AFTER vi mode
-#
+eval "$(zoxide init zsh)"     # init for zoxide
+
 #Source fzf
 source <(fzf --zsh)
 

@@ -15,10 +15,6 @@ touch "${Daily_Note}" && cat > "$Daily_Note" << EOF
 # **DAILY NOTE**
 
 
-
-## 🎯 **Today's Goals**
-- 
-
 ## 📝 **Notes**
 
 
@@ -33,9 +29,6 @@ touch "${Daily_Note}" && cat > "$Daily_Note" << EOF
 
 
 ## 🔗 **Links & References**
-
-
-## 🎉 **Wins & Accomplishments**
 
 
 ## 🤔 **Reflections**

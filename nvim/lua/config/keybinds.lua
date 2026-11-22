@@ -2,12 +2,14 @@
 --  See `:help vim.keymap.set()`
 
 -- Set <space> as leader
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set nerd font
 vim.g.have_nerd_font = false
+
+-- replaces selected text WITHOUT losing what you yanked
+vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -19,10 +21,19 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
---
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Delete text without saving it to any register
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "Delete without yanking" })
+
+-- Better indentation in visual mode
+vim.keymap.set("v", "<", "<gv", { desc = "Unindent and keep selection"})
+vim.keymap.set("v", ">", ">gv", { desc = "Indent and keep selection"})
+
+-- Join lines without moving cursor NB: Go to beginning of line Press SHIFT J in normal mode
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -40,7 +51,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Oil Keymap for popup float Window
-vim.keymap.set('n', '-', '<cmd>Oil --float<CR>', { desc = 'Open Parent directory in Oil' })
+-- vim.keymap.set('n', '-', '<cmd>Oil --float<CR>', { desc = 'Open Parent directory in Oil' })
 
 -- Conform Keymap for Format on Save in Nvim
 vim.keymap.set('n', '<leader>cf', function()
@@ -60,6 +71,18 @@ end, { desc = 'Noice History' })
 
 --Open terminal in nvim
 vim.keymap.set('n', '<leader>T', '<cmd>split | terminal<CR>', { desc = 'Open terminal in nvim' })
+
+-- Move lines up or down in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines down in visual selection"})
+
+-- Native Undotree
+vim.keymap.set("n", "<leader>u", function()
+    vim.cmd.packadd("nvim.undotree")
+    require("undotree").open()
+end, { desc = "Toggle Builtin Undotree"}
+)
+
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
